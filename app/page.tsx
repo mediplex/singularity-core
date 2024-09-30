@@ -1,101 +1,92 @@
+import { ReadMoreForm } from "@/components/read-more-form";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui";
+import { DialogDescription } from "@radix-ui/react-dialog";
 import Image from "next/image";
+import backgroundImage from "@/public/bg.png"; // Add the correct path to your image
+
+const CONTENT = {
+  en: {
+    tag: "Revolution in cancer treatment",
+    headline: "Nanoparticle-based Radiopharmaceutical",
+    subheadline:
+      "We develop the world first universal nanoparticle platform that embeds radioactive materials to deliver targeted radiation to cancer cells.",
+    cta: "Read more",
+    dialog: {
+      title: "Get the full report about aken medical technology in your inbox",
+      description:
+        "You will receive a detailed report about our technology, the science behind it, and the impact it has on cancer treatment.",
+    },
+  },
+  fr: {},
+};
+
+const SETTINGS = {
+  "read-more-form-id": "read-more",
+};
+
+const local = "en";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <main className="flex flex-col justify-center items-center">
+      <header className="flex flex-col items-stretch justify-center gap-12 w-full h-screen sm:max-w-lg relative z-0 overflow-hidden">
         <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={backgroundImage}
+          alt=""
+          className="absolute -z-10 -top-24 -left-24 rotate-45 max-h-[70vh] dark:opacity-10"
+          draggable="false"
+          layout=""
+          objectFit={"cover"}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <Image
+          src={backgroundImage}
+          alt=""
+          className="absolute -z-10 -bottom-24 -right-24 rotate-[135deg] max-h-[70vh] dark:opacity-10"
+          draggable="false"
+          layout=""
+          objectFit="cover"
+        />
+        <hgroup className="text-center flex flex-col items-center gap-2">
+          <p className="text-small font-medium rounded-md py-2 px-4 radius bg-muted">
+            {CONTENT[local].tag}
+          </p>
+          <h1 className="text-3xl font-bold">{CONTENT[local].headline}</h1>
+          <p className="text-xl">{CONTENT[local].subheadline}</p>
+        </hgroup>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="text-lg h-20 rounded-full">
+              {CONTENT[local].cta}
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="flex flex-col gap-12">
+            <DialogHeader>
+              <DialogTitle>{CONTENT[local].dialog.title}</DialogTitle>
+              <DialogDescription>
+                {CONTENT[local].dialog.description}
+              </DialogDescription>
+            </DialogHeader>
+            <ReadMoreForm formId={SETTINGS["read-more-form-id"]} />
+            <DialogFooter>
+              <Button
+                type="submit"
+                form={SETTINGS["read-more-form-id"]}
+                className="text-lg font-semibold h-20 rounded-full w-full"
+              >
+                Submit
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </header>
+    </main>
   );
 }
