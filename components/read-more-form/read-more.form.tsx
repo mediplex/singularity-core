@@ -66,7 +66,7 @@ function ReadMoreForm({ formId }: { formId: string }) {
                   type="multiple"
                   {...field}
                   onValueChange={(value) => field.onChange(value)}
-                  className="flex gap-2 justify-start"
+                  className="flex justify-start gap-2"
                 >
                   <ToggleGroupItem
                     className={cn("flex gap-1", {
@@ -123,13 +123,13 @@ function ReadMoreForm({ formId }: { formId: string }) {
               <FormLabel className="font-semibold">
                 How do you want us to call you?
               </FormLabel>
-              <div className="flex items-center h-10 w-full rounded-md border border-input bg-background ring-offset-background has-[input:focus]:outline-none has-[input:focus]:ring-2 has-[input:focus]:ring-ring has-[input:focus]:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50  px-1">
+              <div className="flex h-10 w-full items-center rounded-md border border-input bg-background px-1 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 has-[input:focus]:outline-none has-[input:focus]:ring-2 has-[input:focus]:ring-ring has-[input:focus]:ring-offset-2">
                 <User className="text-muted-foreground" />
                 <FormControl>
                   <Input
                     placeholder="Your name"
                     {...field}
-                    className=" border-none bg-transparent rounded-none ring-0 focus-visible:outline-none focus-visible:ring-0 outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded-none border-none bg-transparent outline-none ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </FormControl>
               </div>
@@ -148,13 +148,13 @@ function ReadMoreForm({ formId }: { formId: string }) {
               <FormLabel className="font-semibold">
                 Where do you want to receive the report?
               </FormLabel>
-              <div className="flex items-center h-10 w-full rounded-md border border-input bg-background ring-offset-background has-[input:focus]:outline-none has-[input:focus]:ring-2 has-[input:focus]:ring-ring has-[input:focus]:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50  px-1">
+              <div className="flex h-10 w-full items-center rounded-md border border-input bg-background px-1 ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 has-[input:focus]:outline-none has-[input:focus]:ring-2 has-[input:focus]:ring-ring has-[input:focus]:ring-offset-2">
                 <Mail className="text-muted-foreground" />
                 <FormControl>
                   <Input
                     placeholder="Your best email"
                     {...field}
-                    className=" border-none bg-transparent rounded-none ring-0 focus-visible:outline-none focus-visible:ring-0 outline-none disabled:cursor-not-allowed disabled:opacity-50"
+                    className="rounded-none border-none bg-transparent outline-none ring-0 focus-visible:outline-none focus-visible:ring-0 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                 </FormControl>
               </div>

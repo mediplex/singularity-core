@@ -36,12 +36,12 @@ const local = "en";
 
 export default function Home() {
   return (
-    <main className="flex flex-col justify-center items-center">
-      <header className="flex flex-col items-stretch justify-center gap-12 w-full h-screen sm:max-w-lg relative z-0 overflow-hidden">
+    <main className="flex flex-col items-center justify-center">
+      <header className="relative z-0 flex h-screen w-full flex-col items-stretch justify-center gap-12 overflow-hidden px-4 sm:max-w-lg">
         <Image
           src={backgroundImage}
           alt=""
-          className="absolute -z-10 -top-24 -left-24 rotate-45 max-h-[70vh] dark:opacity-10"
+          className="absolute -left-24 -top-24 -z-10 max-h-[70vh] rotate-45 dark:opacity-10"
           draggable="false"
           layout=""
           objectFit={"cover"}
@@ -49,13 +49,13 @@ export default function Home() {
         <Image
           src={backgroundImage}
           alt=""
-          className="absolute -z-10 -bottom-24 -right-24 rotate-[135deg] max-h-[70vh] dark:opacity-10"
+          className="absolute -bottom-24 -right-24 -z-10 max-h-[70vh] rotate-[135deg] dark:opacity-10"
           draggable="false"
           layout=""
           objectFit="cover"
         />
-        <hgroup className="text-center flex flex-col items-center gap-2">
-          <p className="text-small font-medium rounded-md py-2 px-4 radius bg-muted">
+        <hgroup className="flex flex-col items-center gap-2 text-center">
+          <p className="text-small radius rounded-md bg-muted px-4 py-2 font-medium">
             {CONTENT[local].tag}
           </p>
           <h1 className="text-3xl font-bold">{CONTENT[local].headline}</h1>
@@ -63,7 +63,7 @@ export default function Home() {
         </hgroup>
         <Dialog>
           <DialogTrigger asChild>
-            <Button className="text-lg h-20 rounded-full">
+            <Button className="h-20 rounded-full text-lg">
               {CONTENT[local].cta}
             </Button>
           </DialogTrigger>
@@ -79,7 +79,7 @@ export default function Home() {
               <Button
                 type="submit"
                 form={SETTINGS["read-more-form-id"]}
-                className="text-lg font-semibold h-20 rounded-full w-full"
+                className="h-20 w-full rounded-full text-lg font-semibold"
               >
                 Submit
               </Button>

@@ -1,1 +1,1 @@
-export * from './read-more.form'
+export * from "./read-more.form";
