@@ -16,25 +16,29 @@ import {
   FormMessage,
 } from "@/components/ui";
 import { useForm } from "react-hook-form";
-import { Book, Euro, FlaskRound, Mail, Stethoscope, User } from "lucide-react";
+import {
+  Book,
+  Check,
+  Euro,
+  FlaskRound,
+  Icon,
+  LucideProps,
+  Mail,
+  Stethoscope,
+  User,
+} from "lucide-react";
 import {} from "../ui/toggle-group";
 import { cn } from "@/lib/utils";
-
-const readMoreFormSchema = z.object({
-  qualification: z.array(z.string()).optional(),
-  name: z.string().trim().min(1, "Name is required"),
-  email: z.string().trim().email("Invalid email").min(1, "Email is required"),
-});
-
-type ReadMoreFormType = z.infer<typeof readMoreFormSchema>;
+import { readMoreFormSchema, ReadMoreFormType } from "./read-more-form-schema";
+import { ForwardRefExoticComponent, ReactNode, RefAttributes } from "react";
 
 function ReadMoreForm({ formId }: { formId: string }) {
   const form = useForm<ReadMoreFormType>({
     resolver: zodResolver(readMoreFormSchema),
     defaultValues: {
-      qualification: ["scientist"],
-      name: "Mehdi Karim",
-      email: "contact@mehdikarim.com",
+      qualification: [],
+      name: "",
+      email: "",
     },
   });
   function onSubmit(values: ReadMoreFormType) {
@@ -57,57 +61,49 @@ function ReadMoreForm({ formId }: { formId: string }) {
             <FormItem>
               <FormLabel className="font-semibold">
                 Tell us about yourself to personalize your report
-                <FormDescription className="font-medium">
+                <FormDescription className="font-normal">
                   Click on or more qualification that best describes you.
                 </FormDescription>
               </FormLabel>
               <FormControl>
                 <ToggleGroup
+                  // size={"lg"}
                   type="multiple"
                   {...field}
                   onValueChange={(value) => field.onChange(value)}
-                  className="flex justify-start gap-2"
+                  className="grid grid-cols-2 justify-start gap-2"
                 >
-                  <ToggleGroupItem
-                    className={cn("flex gap-1", {
-                      "ring-1 ring-ring ring-offset-input":
-                        field.value?.includes("doctor"),
-                    })}
-                    value="doctor"
-                  >
-                    <Stethoscope />
-                    <span>Doctor</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    className={cn("flex gap-1", {
-                      "ring-1 ring-ring ring-offset-input":
-                        field.value?.includes("scientist"),
-                    })}
+                  {/* Doctor */}
+                  <IconToggleGroupItem
+                    checked={field.value?.includes("doctor")}
+                    label="Doctor"
+                    value={"doctor"}
+                    Icon={Stethoscope}
+                  />
+
+                  {/* Scientist */}
+                  <IconToggleGroupItem
+                    checked={field.value?.includes("scientist")}
+                    label="Scientist"
                     value="scientist"
-                  >
-                    <FlaskRound />
-                    <span>Scientist</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    className={cn("flex gap-1", {
-                      "ring-1 ring-ring ring-offset-input":
-                        field.value?.includes("investor"),
-                    })}
+                    Icon={FlaskRound}
+                  />
+
+                  {/* Investor */}
+                  <IconToggleGroupItem
+                    checked={field.value?.includes("investor")}
+                    label="Investor"
                     value="investor"
-                  >
-                    <Euro />
-                    <span>Investor</span>
-                  </ToggleGroupItem>
-                  <ToggleGroupItem
-                    className={cn("flex gap-1", {
-                      "ring-1 ring-ring ring-offset-input":
-                        field.value?.includes("other"),
-                    })}
+                    Icon={Euro}
+                  />
+
+                  {/* Other */}
+                  <IconToggleGroupItem
+                    checked={field.value?.includes("other")}
+                    label="Other"
                     value="other"
-                  >
-                    <Book />
-                    <span>Other</span>
-                  </ToggleGroupItem>
+                    Icon={Book}
+                  />
                 </ToggleGroup>
               </FormControl>
               <FormMessage />
@@ -169,3 +165,32 @@ function ReadMoreForm({ formId }: { formId: string }) {
 }
 
 export { ReadMoreForm };
+
+const IconToggleGroupItem: React.FC<{
+  checked?: boolean;
+  label: string;
+  value: string;
+  Icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
+}> = ({ checked, label, value, Icon }) => {
+  return (
+    <ToggleGroupItem
+      className={cn(
+        "flex items-center justify-start gap-2 border border-input",
+        {
+          "ring-1 ring-ring ring-offset-input": checked,
+        },
+      )}
+      value={value}
+    >
+      <Icon />
+      <span className="flex flex-1">{label}</span>
+      <Check
+        className={cn("opacity-0", {
+          "opacity-100": checked,
+        })}
+      />
+    </ToggleGroupItem>
+  );
+};

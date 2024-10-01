@@ -20,9 +20,9 @@ const CONTENT = {
       "We develop the world first universal nanoparticle platform that embeds radioactive materials to deliver targeted radiation to cancer cells.",
     cta: "Read more",
     dialog: {
-      title: "Get the full report about aken medical technology in your inbox",
-      description:
-        "You will receive a detailed report about our technology, the science behind it, and the impact it has on cancer treatment.",
+      title: "Step 1",
+      // description:
+      //   "You will receive a detailed report about our technology, the science behind it, and the impact it has on cancer treatment.",
     },
   },
   fr: {},
@@ -70,9 +70,9 @@ export default function Home() {
           <DialogContent className="flex flex-col gap-12">
             <DialogHeader>
               <DialogTitle>{CONTENT[local].dialog.title}</DialogTitle>
-              <DialogDescription>
+              {/* <DialogDescription>
                 {CONTENT[local].dialog.description}
-              </DialogDescription>
+              </DialogDescription> */}
             </DialogHeader>
             <ReadMoreForm formId={SETTINGS["read-more-form-id"]} />
             <DialogFooter>
