@@ -8,7 +8,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui";
-import { DialogDescription } from "@radix-ui/react-dialog";
 import Image from "next/image";
 import backgroundImage from "@/public/bg.png"; // Add the correct path to your image
 

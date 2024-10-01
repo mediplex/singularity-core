@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 
 import {
   Input,
@@ -21,7 +20,6 @@ import {
   Check,
   Euro,
   FlaskRound,
-  Icon,
   LucideProps,
   Mail,
   Stethoscope,
@@ -30,7 +28,7 @@ import {
 import {} from "../ui/toggle-group";
 import { cn } from "@/lib/utils";
 import { readMoreFormSchema, ReadMoreFormType } from "./read-more-form-schema";
-import { ForwardRefExoticComponent, ReactNode, RefAttributes } from "react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 function ReadMoreForm({ formId }: { formId: string }) {
   const form = useForm<ReadMoreFormType>({
